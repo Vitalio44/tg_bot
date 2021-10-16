@@ -1,9 +1,8 @@
 import 'dart:io';
 
+import 'package:iport_parser/services/watch_service.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
-
-import 'lib/services/watch_service.dart';
 
 void main(List<String> arguments) async {
   var telegram = Telegram(Platform.environment['TG_BOT_TOKEN']!);
