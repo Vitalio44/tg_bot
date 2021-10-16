@@ -27,11 +27,13 @@ void main(List<String> arguments) async {
       );
 
   teledart.onCommand('watch').listen(
-    ((message) async {
+    ((message) {
       teledart.replyMessage(message, 'Please wait ...');
-      final watchList = await WatchService.watches();
-      String messageText = watchList.join('\n');
-      teledart.replyMessage(message, messageText);
+      WatchService.watches().then((value) {
+        teledart.replyMessage(message, value.join('\n'));
+      });
+      // String messageText = watchList.join('\n');
+      // teledart.replyMessage(message, messageText);
     }),
   );
 }

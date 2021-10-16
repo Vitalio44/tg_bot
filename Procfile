@@ -1,1 +1,1 @@
-worker: ./dart-sdk/bin/dart run iport_parser
+worker: ./dart-sdk/bin/dart bin/iport_parser.dart
