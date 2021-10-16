@@ -58,7 +58,7 @@ class WatchService {
             );
           }
         }
-        Future.delayed(Duration(hours: 4));
+        await Future.delayed(Duration(hours: 4));
       }
     }
   }
