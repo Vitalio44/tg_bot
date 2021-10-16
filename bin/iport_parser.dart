@@ -32,8 +32,21 @@ void main(List<String> arguments) async {
       WatchService.watches().then((value) {
         teledart.replyMessage(message, value.join('\n'));
       });
-      // String messageText = watchList.join('\n');
-      // teledart.replyMessage(message, messageText);
+    }),
+  );
+
+  teledart.onCommand('chat_id').listen(
+        ((message) => teledart.replyMessage(message, '${message.chat.id}')),
+      );
+
+  teledart.onCommand('notify').listen(
+    ((message) {
+      teledart.replyMessage(
+        message,
+        'Ok! I send to this chat ${message.chat.id}, '
+        'then you can buy apple watch 7 at IPort SPb',
+      );
+      WatchService.startWatch(teledart, message.chat.id);
     }),
   );
 }
