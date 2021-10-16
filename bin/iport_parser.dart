@@ -22,7 +22,10 @@ void main(List<String> arguments) async {
       .listen(
         (message) => teledart.telegram.sendMessage(
           message.chat.id,
-          'Hello! Ask /watch and you can see available watch at IPort spb',
+          'Hello! You can ask:\n'
+          '/watch - and you can see available or not watch at IPort spb\n'
+          '/chat_id - bot send this chat ID\n'
+          '/notify - to subscribe and bot send message then watch be available',
         ),
       );
 
@@ -30,7 +33,10 @@ void main(List<String> arguments) async {
     ((message) {
       teledart.replyMessage(message, 'Please wait ...');
       WatchService.watches().then((value) {
-        teledart.replyMessage(message, value.join('\n'));
+        teledart.replyMessage(
+          message,
+          value.map((e) => e.toMessage()).join('\n'),
+        );
       });
     }),
   );
